@@ -2,6 +2,7 @@ require ("./contact.rb")
 
 class Database
   attr_accessor :first_name, :last_name, :email, :note, :id
+
   
   @contacts = []
   @id = 1
@@ -72,6 +73,10 @@ class Database
 
   def self.display_all_id
     @contacts.each {|contact| puts "[id] :  #{contact.id}" } 
+  end
+
+  def self.delete_contact(contact_to_be_deleted)
+    @contacts.delete_if { |contact| contact.id == contact_to_be_deleted   }
   end
 
 end

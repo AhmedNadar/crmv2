@@ -110,7 +110,11 @@ class CRM
   end
 
   def delete_contact 
-    
+    puts "enter the id of the contact to be deleted"
+    puts "" 
+    contact_to_be_deleted = gets.chomp.to_i
+    Database.delete_contact(contact_to_be_deleted) 
+    main_menu  
   end
 
   def display_all_contacts
@@ -147,10 +151,9 @@ class CRM
     else main_menu
 
     end
-      
-    
   end
 
+  
   def exit
     puts "You are now exiting the program"
     abort
