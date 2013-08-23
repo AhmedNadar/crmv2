@@ -51,14 +51,14 @@ class CRM
 
   def modify_existing_contact
     puts "enter id of contact to be modified" 
-    contact_to_be_modified = gets.chomp
+    contact_to_be_modified = gets.chomp.to_i
     if contact_to_be_modified == "" 
       puts "\e[H\e[2J" 
       puts "back to main menu"   
       main_menu 
     else 
       puts "confirm selection? (y or n)"
-      selection = gets.chomp.downcase
+      selection = gets.chomp.downcase #<--- need to be implemented
     end
 
     if selection == "y"
@@ -79,29 +79,32 @@ class CRM
       when "1" then 
                     puts "input new first_name"
                     first_name = gets.chomp
-                    Database.modify_first_name(first_name) 
+                    Database.modify_first_name(first_name, contact_to_be_modified) 
                     main_menu
       when "2" then
                     puts "input new last_name"
                     last_name = gets.chomp
-                    Database.modify_last_name(last_name) 
+                    Database.modify_last_name(last_name,contact_to_be_modified) 
                     main_menu
       when "3" then
                     puts "input new email"
                     email = gets.chomp
-                    Database.modify_email(email) 
+                    Database.modify_email(email, contact_to_be_modified) 
                     main_menu
       when "4" then
                    puts "input new note"
                     note = gets.chomp
-                    Database.modify_note(note) 
+                    Database.modify_note(note,contact_to_be_modified) 
                     main_menu 
 
       when "5" then
-                    #puts "input new id"
-                    #id = gets.chomp
-                    #Database.modify_email(id) 
-                    #main_menu
+                    puts "input new id"
+                    new_id = gets.chomp
+                    Database.modify_id(new_id, contact_to_be_modified) 
+                    main_menu
+      else puts "\e[H\e[2J" 
+           puts "back to main menu"   
+           main_menu 
     end
   
   end
@@ -113,9 +116,26 @@ class CRM
   def display_all_contacts
     all_contacts = Database.display_all_contacts
     all_contacts
+    main_menu
   end
 
   def display_attribute
+    puts "What do you want to change" 
+    puts "[1] Name" 
+    puts "[2] email" 
+    puts "[3] note"
+    puts "[4] id" 
+    
+    attribute_to_be_displayed = gets.chomp
+    case attribute_to_be_displayed
+    when "1" then
+                  all_name = Database.display_all_name
+                  all_name
+                  main_menu
+    else main_menu
+
+    end
+      
     
   end
 

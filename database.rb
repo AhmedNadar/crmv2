@@ -17,41 +17,49 @@ class Database
     @contacts
   end
 
-  def self.modify_first_name(first_name)
+  def self.modify_first_name(first_name, contact_to_be_modified)
     #puts "im in modify email method"
-    @contacts.each {|x| x.first_name = first_name}
-    #p first_name
+    contacts.each {|x| x.first_name = first_name if x.id == contact_to_be_modified}
   end
 
-  def self.modify_last_name(last_name)
+  def self.modify_last_name(last_name, contact_to_be_modified)
     
-    @contacts.each {|x| x.last_name = last_name}
-    
-  end
-
-  def self.modify_email(email)
-    @contacts.each {|x| x.email = email} 
+    @contacts.each {|x| x.last_name = last_name if x.id == contact_to_be_modified}
     
   end
 
-  def self.modify_email(note)
-    @contacts.each {|x| x.note = note} 
+  def self.modify_email(email, contact_to_be_modified)
+    @contacts.each {|x| x.email = email if x.id == contact_to_be_modified} 
     
   end
 
-  #def self.modify_last_name(id)
+  def self.modify_note(note, contact_to_be_modified)
+    @contacts.each {|x| x.note = note if x.id == contact_to_be_modified} 
     
-   # @contacts.select{ |id| id == contacts.id}.each {|x| x.id = id} 
+  end
+
+  def self.modify_id(new_id, contact_to_be_modified)
     
-  #end
+@contacts.each {|x| x.id = new_id if x.id == contact_to_be_modified}     
+  end
   
   def self.display_all_contacts
     @contacts.each do |contact| 
-      puts "[ID] #{contact.id}"
-      puts "[NAME] #{contact.first_name} #{contact.last_name}" 
-      puts "[EMAIL] #{contact.email}"
-      puts "[NOTE] '#{contact.note}'"
+      puts ""
+      puts ""
+      puts ""
+      puts "[id] : #{contact.id}"
+      puts "[name] :  #{contact.first_name} #{contact.last_name}" 
+      puts "[email] : #{contact.email}"
+      puts "[note] : #{contact.note}"
+      puts ""
+      puts ""
+      puts ""
     end  
+  end
+
+  def self.display_all_name
+    @contacts.each {|contact| puts "[name] :  #{contact.first_name} #{contact.last_name}" } 
   end
 
 end
