@@ -62,4 +62,16 @@ class Database
     @contacts.each {|contact| puts "[name] :  #{contact.first_name} #{contact.last_name}" } 
   end
 
+  def self.display_all_email
+    @contacts.each {|contact| puts "[email] :  #{contact.email}"  } 
+  end
+
+  def self.display_all_note
+    @contacts.each {|contact| puts "[note] :  #{contact.note}" } 
+  end
+
+  def self.display_all_id
+    @contacts.each {|contact| puts "[id] :  #{contact.id}" } 
+  end
+
 end

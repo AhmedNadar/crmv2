@@ -132,6 +132,18 @@ class CRM
                   all_name = Database.display_all_name
                   all_name
                   main_menu
+    when "2" then
+                  all_email = Database.display_all_email
+                  all_email
+                  main_menu
+    when "3" then
+                  all_note = Database.display_all_note
+                  all_note
+                  main_menu               
+    when "4" then
+                  all_id = Database.display_all_id
+                  all_id
+                  main_menu              
     else main_menu
 
     end
